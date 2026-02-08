@@ -290,10 +290,10 @@ build_and_install() {
     pushd "$BUILD_DIR" > /dev/null
 
     if [[ "$SKIP_INSTALL" == "true" ]]; then
-        makepkg -sf --noconfirm
+        yes "" | makepkg -sf --noconfirm
         ok "Package built (not installed due to --skip-install)"
     else
-        makepkg -sric --noconfirm
+        yes "" | makepkg -sric --noconfirm
         ok "Package built and installed!"
     fi
 
