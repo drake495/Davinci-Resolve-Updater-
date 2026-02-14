@@ -4,6 +4,9 @@ Automated DaVinci Resolve updater for Arch Linux.
 
 Checks for new versions via Blackmagic's API, downloads the installer, fetches the latest PKGBUILD from the AUR, updates version numbers and checksums, and builds/installs the package — all in one command.
 
+[![Watch the video](https://img.youtube.com/vi/Tm3iNIgTRXw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Tm3iNIgTRXw)
+
+
 ## What it automates
 
 1. Queries Blackmagic's API for the latest stable Linux version
