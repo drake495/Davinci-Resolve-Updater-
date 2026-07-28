@@ -98,6 +98,72 @@ ln -s "$(pwd)/update-resolve.sh" ~/.local/bin/update-resolve
 
 On first run, you'll be prompted for registration info (name, email, etc.). This is the same info Blackmagic requires on their download page. It's saved locally in a `.config` file next to the script and reused on subsequent runs.
 
+## Fedora support
+
+An experimental Fedora-specific updater is available as:
+
+```bash
+./update-resolve_FEDORA.sh
+```
+
+The Fedora updater uses a different installation workflow from the Arch Linux version. It does not use the AUR, a `PKGBUILD`, `makepkg`, or pacman.
+
+### Tested configuration
+
+The Fedora script has currently been tested with:
+
+* Fedora Linux
+* DaVinci Resolve installed in `/opt/resolve`
+* An installation initially created using [`davinci-helper`](https://github.com/H3rz3n/davinci-helper)
+* The free edition of DaVinci Resolve
+
+The `davinci-helper` installation process modifies the original Blackmagic Design package to improve Fedora compatibility. Because of this, the Fedora updater preserves the existing installation layout and replaces the application files in `/opt/resolve`.
+
+Other installation methods or custom installation directories may not currently be supported.
+
+### Fedora installation
+
+```bash
+# Clone the repository
+git clone https://github.com/drake495/Davinci-Resolve-Updater.git
+cd Davinci-Resolve-Updater
+
+# Make the Fedora updater executable
+chmod +x update-resolve_FEDORA.sh
+
+# Run the updater
+./update-resolve_FEDORA.sh
+```
+
+The script may request administrator privileges when updating files under `/opt/resolve`.
+
+### Fedora usage
+
+```bash
+# Check for and install the latest version
+./update-resolve_FEDORA.sh
+
+# Only check whether an update is available
+./update-resolve_FEDORA.sh --check-only
+
+# Reinstall the latest version
+./update-resolve_FEDORA.sh --force
+
+# Re-enter the Blackmagic Design registration information
+./update-resolve_FEDORA.sh --reconfigure
+```
+
+Only use the options listed above if they are supported by the Fedora script.
+
+### Important notes
+
+* Close DaVinci Resolve before starting the update.
+* Back up important projects, databases, presets, plugins, and custom configuration before updating.
+* This script has only been tested with the installation layout described above.
+* Review the script before running it with administrator privileges.
+* Fedora support should currently be considered experimental.
+
+
 ## DaVinci Resolve Studio
 
 To use this for the Studio edition, change the `PRODUCT` variable near the top of the script:
