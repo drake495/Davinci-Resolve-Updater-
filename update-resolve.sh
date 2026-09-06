@@ -82,6 +82,7 @@ prompt_config() {
     echo -e "${BLUE}╠══════════════════════════════════════════════════════╣${NC}"
     echo -e "${BLUE}║  Blackmagic requires registration to download.      ║${NC}"
     echo -e "${BLUE}║  This is the same info you'd enter on their site.   ║${NC}"
+    echo -e "${BLUE}║  All fields are currently required to register.     ║${NC}"
     echo -e "${BLUE}║  It's saved locally and never shared elsewhere.     ║${NC}"
     echo -e "${BLUE}╚══════════════════════════════════════════════════════╝${NC}"
     echo ""
@@ -96,8 +97,8 @@ prompt_config() {
     read -rp "Street address: " REG_STREET
 
     # Validate required fields
-    if [[ -z "$REG_FIRSTNAME" || -z "$REG_LASTNAME" || -z "$REG_EMAIL" || -z "$REG_STREET" ]]; then
-        err "First name, last name, email, and street are required."
+    if [[ -z "$REG_FIRSTNAME" || -z "$REG_LASTNAME" || -z "$REG_EMAIL" || -z "$REG_PHONE" || -z "$REG_COUNTRY" || -z "$REG_STATE" || -z "$REG_CITY" || -z "$REG_STREET" ]]; then
+        err "All fields are required"
         exit 1
     fi
 
